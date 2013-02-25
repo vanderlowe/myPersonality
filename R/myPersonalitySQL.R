@@ -11,7 +11,7 @@
 #' myPersonality()
 #' myPersonality("SELECT * FROM demog")
 
-myPersonalitySQL <- function(query = NULL) {
+myPersonalitySQL <- function(query = "SHOW TABLES;") {
   
   # Check whether necessary environment variables exist. If not, run configuration.
   if (all(
