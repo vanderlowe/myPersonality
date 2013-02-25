@@ -35,12 +35,14 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
   
   if (Sys.info()[1] == "Darwin") {
     # Access for Mac users
+    require(RMySQL)
     con <- dbConnect("MySQL", host = myPersonality_host, user = myPersonality_user, password = myPersonality_password, dbname = myPersonality_database)
     results <- dbGetQuery(con, query)
     dbDisconnect(con)
     return(results)
   } else {
     # PC code in here
+    require(RODBC)
     channel <- odbcConnect("UnifiedServer")
     sqlQuery(channel, sprintf("USE %s;", magic_db))
     results <- sqlQuery(channel, query)
