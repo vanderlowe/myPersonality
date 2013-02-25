@@ -16,5 +16,5 @@ config <- function() {
   Sys.setenv("myPersonality_user" = uid)
   
   pwd <- readline("Please enter your password: ")
-  Sys.setenv("myPersonality_user" = pwd)
+  Sys.setenv("myPersonality_password" = pwd)
 }
