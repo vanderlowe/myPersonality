@@ -1,0 +1,15 @@
+bibentry("Manual",
+   title = "myPersonality Research Wiki",
+   author = c(
+       person(c("Ilmo", "K."), "van der Lowe", role = "aut"),
+       person("Michal", "Kosinsky", role = "aut"),
+       person(c("David", "J."), "Stillwell", role = "aut"),
+       person(c("Alex", "B."), "Kogan", role = "aut")
+   ),
+   organization = "Cambridge Psychometrics Centre",
+   address      = "Cambridge, United Kingdom",
+   year   = substring(Sys.time(),1,4),
+   url    = "http://mypersonality.org/",
+
+   mheader = "To cite myPersonality in publications use:"
+)

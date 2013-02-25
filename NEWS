@@ -1,0 +1,5 @@
+myPersonality 0.1
+===========
+  
+* new `myPersonalitySQL` function that communicates with the database 
+  administered by Cambridge Psychometrics Centre.
