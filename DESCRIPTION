@@ -5,7 +5,6 @@ URL: http://mypersonality.org
 Version: 0.1
 Maintainer: Ilmo van der Lowe <iv244@cam.ac.uk>
 Author: Ilmo van der Lowe <iv244@cam.ac.uk>
-Depends: R (>= 2.14)
+Depends: R (>= 2.14), RMySQL, RODBC
 Suggests: testthat (>= 0.2)
-Imports: RMySQL, RODBC
 License: MIT
