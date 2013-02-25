@@ -6,3 +6,5 @@
 # RStudio project files
 .Rproj
 .html
+.Rbuildignore
+myPersonality.Rproj

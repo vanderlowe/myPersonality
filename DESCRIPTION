@@ -1,12 +1,10 @@
 Package: myPersonality
 Title: Tools for accessing myPersonality dataset provided by Cambridge Psychometrics Centre
-Description: myPersonality is a large dataset of over 4 million Facebook users and their 
-test results. Because the dataset is too large to distribute as files, this package provides
-access to the dataset on a database administered by Cambridge Psychometrics Centre.
+Description: myPersonality is a large dataset of over 4 million Facebook users and their test results. Because the dataset is too large to distribute as files, this package provides access to the dataset on a database administered by Cambridge Psychometrics Centre.
 URL: http://mypersonality.org
 Version: 0.1
-Maintainer: Ilmo van der Lowe <iv244.cam.ac.uk>
-Author: Ilmo van der Lowe <iv244.cam.ac.uk>
+Maintainer: Ilmo van der Lowe <iv244@cam.ac.uk>
+Author: Ilmo van der Lowe <iv244@cam.ac.uk>
 Depends: R (>= 2.14)
 Suggests: testthat (>= 0.2)
 Imports: RMySQL, RODBC
