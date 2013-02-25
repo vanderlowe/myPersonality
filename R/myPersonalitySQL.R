@@ -24,27 +24,40 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     config()
   }
   
+  # Get environment variables needed for db access
   myPersonality_host <- Sys.getenv("myPersonality_host")
   myPersonality_user <- Sys.getenv("myPersonality_user")
   myPersonality_password <- Sys.getenv("myPersonality_password")
   myPersonality_database <- Sys.getenv("myPersonality_database")
     
-  # Check whether the user is on a Windows or Mac system
+  # Check whether the user is on a Windows or Mac system.
   # This is needed, because Mac users will connect via RMySQL
-  # and Windows users via RODBC
+  # and Windows users via RODBC.
   
   if (Sys.info()[1] == "Darwin") {
     # Access for Mac users
-    require(RMySQL)
+    if (!require(RMySQL)) {
+      # Install RMySQL if not available
+      install.packages("RMySQL")
+      require(RMySQL)
+    }
+    
+    # Establish MySQL connection
     con <- dbConnect("MySQL", host = myPersonality_host, user = myPersonality_user, password = myPersonality_password, dbname = myPersonality_database)
     results <- dbGetQuery(con, query)
     dbDisconnect(con)
     return(results)
+    
   } else {
     # PC code in here
-    require(RODBC)
+    if (!require(RODBC)) {
+      # Install RODBC if not available
+      install.packages("RMySQL")
+      require(RODBC)
+    }
+    
     channel <- odbcConnect("UnifiedServer")
-    sqlQuery(channel, sprintf("USE %s;", magic_db))
+    sqlQuery(channel, sprintf("USE %s;", myPersonality_database)) # Use the right database
     results <- sqlQuery(channel, query)
     odbcClose(channel)
     return(results)
