@@ -18,3 +18,10 @@ config <- function() {
   pwd <- readline("Please enter your password: ")
   Sys.setenv("myPersonality_password" = pwd)
 }
+
+localConfig <- function() {
+  Sys.setenv("myPersonality_host" = "127.0.0.1")
+  Sys.setenv("myPersonality_database" = "myPersonality_dev")
+  Sys.setenv("myPersonality_user" = "root")
+  Sys.setenv("myPersonality_password" = "")
+}

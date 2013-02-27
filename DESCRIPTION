@@ -6,5 +6,6 @@ Version: 0.1
 Maintainer: Ilmo van der Lowe <iv244@cam.ac.uk>
 Author: Ilmo van der Lowe <iv244@cam.ac.uk>
 Depends: R (>= 2.14)
+Imports: data.table
 Suggests: testthat (>= 0.2), RMySQL, RODBC
 License: MIT

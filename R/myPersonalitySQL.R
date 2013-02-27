@@ -56,7 +56,7 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
       require(RODBC)
     }
     
-    channel <- odbcConnect("UnifiedServer")
+    channel <- odbcConnect("myPersonality")
     sqlQuery(channel, sprintf("USE %s;", myPersonality_database)) # Use the right database
     results <- sqlQuery(channel, query)
     odbcClose(channel)
