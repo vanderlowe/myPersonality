@@ -1,15 +1,14 @@
-participants <- function(variables, ...) {
+participants <- function(...) {
   mySQL.table.name <- "demog"
-  
-  return(createVirtualTable(mySQL.table.name, variables, ...))
+  return(createVirtualTable(mySQL.table.name, ...))
 }
 
-address <- function(variables, ...) {
+address <- function(...) {
   mySQL.table.name <- "address"
-  return(createVirtualTable(mySQL.table.name, variables, ...))
+  return(createVirtualTable(mySQL.table.name, ...))
 }
 
-employers <- function(variables, ...) {
+employers <- function(...) {
   mySQL.table.name <- "fb_employer"
-  return(createVirtualTable(mySQL.table.name, variables, ...))
+  return(createVirtualTable(mySQL.table.name, ...))
 }
