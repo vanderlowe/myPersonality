@@ -69,14 +69,18 @@ Let's say we want to get the age, gender, and relationship status of all users a
 ```
 people <- participants("age", "gender", "relationship_status")
 ```
-You can provide as many or as few variable names as you wish.
+You can provide as many or as few variable names as you wish. However, keep in mind that more variables mean more data to transfer and requesting many variables may be very slow.
 
 ### Filtering data
-You can also easily filter the results by providing the criteria with the variable name. Let's get a list of all myPersonality participants over the age of 90 living in Miami.
+You can also easily filter the results by providing the criteria with the variable name. Let's get the data for participants over the age of 90 and assign the results to variable `elderly`.
 ```
 # Filter by age
 elderly <- participants("age > 90", "gender", "relationship_status")
+```
 
+## Merging data
+The results from different tables can be combined. Let's get a list of all myPersonality participants over the age of 90 living in Miami. Since we already have the variable `elderly`, we only need their location data.
+```
 # Filter by location
 location <- address("current_location_city = 'Miami'")
 
