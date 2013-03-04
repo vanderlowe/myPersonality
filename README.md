@@ -9,7 +9,7 @@ Because the dataset contains sensitive information, it is made available only to
 # Installation
 We aim to make accessing the dataset as easy as possible, but getting set up will require a few steps. Please follow these instructions carefully. You need to do the setup only once. **Please make sure you have requested (and received) your user name and password from Cambridge Psychometrics Centre before proceeding.**
 
-First, you need to install the `myPersonality` package itself. You can install the prototype version on [github](https://github.com/vanderlowe/myPersonality) using the R package **devtools**:
+First, you need to install the `myPersonality` package itself. You can install the prototype version on [github](https://github.com/vanderlowe/myPersonality) using `devtools`:
 ```
 install.packages("devtools") 
 library(devtools)
@@ -72,24 +72,20 @@ people <- participants("age", "gender", "relationship_status")
 You can provide as many or as few variable names as you wish. However, keep in mind that more variables mean more data to transfer and requesting many variables may be very slow.
 
 ### Filtering data
-You can also easily filter the results by providing the criteria with the variable name. Let's get the data for participants over the age of 90 and assign the results to variable `elderly`.
+You can also easily filter the results by providing the criteria with the variable name. Let's get the same data as above for participants over the age of 90 and assign the results to variable `elderly`.
 ```
-# Filter by age
 elderly <- participants("age > 90", "gender", "relationship_status")
 ```
 
 ## Merging data
-The results from different tables can be combined. Let's get a list of all myPersonality participants over the age of 90 living in Miami. Since we already have the variable `elderly`, we only need their location data.
+The results from different tables can be combined. Let's get data for all myPersonality participants over the age of 90 who live in cities with a population less than 10,000, but greater than 100. Since we already have the variable `elderly` from the example above, we only need to request the necessary location data.
 ```
-# Filter by location
-location <- address("current_location_city = 'Miami'")
-
-# Merge results
-elderly.in.Miami <- merge(people, location)
+location <- address("current_location_city", "population < 10000", "population > 100")
+elderly.in.small.towns <- merge(elderly, location)
 ```
 
 # Example usage: Advanced users
-All data access by the package is done by the `myPersonalitySQL` function. It allows you to execute SQL queries on the database (only read-only queries are allowed).
+All data access is done via the `myPersonalitySQL` function. It allows you to execute SQL queries on the database (only read-only queries are allowed).
 ```
 elderly.in.Miami <- myPersonalitySQL("SELECT demog.age, demog.gender, demog.relationship_status, address.current_location_city FROM demog LEFT JOIN address ON demog.userid = address.userid WHERE demog.age > 90 AND address.current_location_city = 'Miami'")
 ```
