@@ -78,16 +78,22 @@ elderly <- participants("age > 90", "gender", "relationship_status")
 ```
 
 ## Merging data
-The results from different tables can be combined. Let's get data for all myPersonality participants over the age of 90 who live in cities with a population less than 10,000, but greater than 100. Since we already have the variable `elderly` from the example above, we only need to request the necessary location data.
+The results from different tables can be combined. Let's get data for all myPersonality participants over the age of 90 who live in cities with a population greater than 100, but greater than 10,000. Since we already have the variable `elderly` from the example above, we only need to request the necessary location data.
 ```
-location <- address("current_location_city", "population < 10000", "population > 100")
+location <- address("current_location_city", "population > 100", "population < 10,000")
 elderly.in.small.towns <- merge(elderly, location)
 ```
 
 # Example usage: Advanced users
 All data access is done via the `myPersonalitySQL` function. It allows you to execute SQL queries on the database (only read-only queries are allowed).
 ```
-elderly.in.Miami <- myPersonalitySQL("SELECT demog.age, demog.gender, demog.relationship_status, address.current_location_city FROM demog LEFT JOIN address ON demog.userid = address.userid WHERE demog.age > 90 AND address.current_location_city = 'Miami'")
+elderly.in.Miami <- myPersonalitySQL("
+  SELECT demog.age, demog.gender, demog.relationship_status, address.current_location_city 
+  FROM demog 
+  LEFT JOIN address 
+  ON demog.userid = address.userid 
+  WHERE demog.age > 90 AND address.current_location_city = 'Miami'"
+)
 ```
 
 # Product Backlog
