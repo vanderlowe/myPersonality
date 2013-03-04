@@ -1,5 +1,8 @@
 myPersonality 0.1
 ===========
-  
-* new `myPersonalitySQL` function that communicates with the database 
+
+* Convenience functions to access data in a subset of tables.
+* Helpful feedback when using convenience functions without arguments.
+* Convenience function arguments understood as both column names and filter statements.
+* `myPersonalitySQL` function that communicates with the database 
   administered by Cambridge Psychometrics Centre.
