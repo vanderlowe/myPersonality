@@ -14,8 +14,9 @@ createVirtualTable <- function(table.name, ...) {
   # Identify columns and WHERE statements from arguments supplied by user
   args <- processFunctionArguments(...)
   if (is.null(args)) {
-    error.msg <- sprintf("\nYou must provide at least one variable to get from the myPersonality database.\nYou can choose one of the following:\n%s", paste(valid.columns, collapse = ", "))
-    stop(error.msg)
+    null.msg <- sprintf("You must request at least one variable.\nYou can choose one or more of the following:\n%s", paste(valid.columns, collapse = "\n"))
+    message(null.msg)
+    return(invisible(NULL))
   }
   
   o$columns <- c(o$key, args$columns) # Always include primary key for merges later on
@@ -29,7 +30,7 @@ createVirtualTable <- function(table.name, ...) {
   o$where <- args$where
   
   class(o) <- "virtual.table"
-  return(o)
+  return(getData(o))
 }
 
 print.virtual.table <- function(x) {
