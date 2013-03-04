@@ -1,7 +1,7 @@
 myPersonality
 =============
 
-The _myPersonality_ R package provides easy access to a rich dataset by the same name that was created by [Cambridge Psychometrics Centre](http://www.psychometrics.cam.ac.uk). To learn more about the dataset itself, please visit [myPersonality research wiki](http://mypersonality.org). Because the dataset contains millions of respondents, the easiest way to access the data is through a database connection. The _myPersonality_ package provides a set of utility functions to request specific variables of interest from the data.
+The _myPersonality_ R package provides easy access to a rich dataset created by [Cambridge Psychometrics Centre](http://www.psychometrics.cam.ac.uk). To learn more about the dataset itself, please visit [myPersonality research wiki](http://mypersonality.org). Because the dataset contains millions of respondents, the easiest way to access the data is through a database connection. The _myPersonality_ package provides a set of utility functions to request specific variables of interest from the data.
 
 # Data access
 The dataset is only available by special permission to our academic collaborators. If you are interested in using the dataset in your research, please [contact us](http://mypersonality.org/wiki/doku.php?id=database_use_guidelines) to request access privileges. **Please make sure you have received your user name and password from Cambridge Psychometrics Centre before proceeding with installation.**
@@ -55,11 +55,11 @@ employers()
 Each of these functions gives you access to data in our database.
 
 ## Loading data
-Let's start with basic information about participants in myPersonality database. To see what variables are available, please type:
+Let's start with basic information about participants in myPersonality database. Go ahead and type:
 ```
 participants()
 ```
-You should see the following message.
+You should see the following message:
 ```
 You must request at least one variable.
 You can choose one or more of the following:
@@ -88,7 +88,7 @@ people <- participants("age", "gender", "relationship_status")
 You can provide as many or as few variable names as you wish. However, keep in mind that more variables mean more data to transfer and requesting many variables at a time may be very slow.
 
 ### Filtering data
-You can also easily filter the results by providing the criteria with the variable name. Let's get the same data as above for participants over the age of 90 and assign the results to variable `elderly`.
+You can also easily filter the results by specifying a criterion after the variable name. Let's get the same data as above for participants over the age of 90 and assign the results to variable `elderly`.
 ```
 elderly <- participants("age > 90", "gender", "relationship_status")
 ```
@@ -108,8 +108,8 @@ elderly.in.Miami <- myPersonalitySQL("
   FROM demog 
   LEFT JOIN address 
   ON demog.userid = address.userid 
-  WHERE demog.age > 90 AND address.current_location_city = 'Miami'"
-)
+  WHERE demog.age > 90 AND address.current_location_city = 'Miami'
+")
 ```
 
 # Product Backlog
