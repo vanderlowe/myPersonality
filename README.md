@@ -1,13 +1,13 @@
 myPersonality
 =============
 
-The `myPersonality` R package provides easy access to a rich dataset collected by [Cambridge Psychometrics Centre](http://www.psychometrics.cam.ac.uk). To learn more about the dataset itself, please visit myPersonality research wiki at http://mypersonality.org. Because the dataset is very large (i.e. millions of respondents), the easiest way for our collaborators to access the data is through a connection to our database. This R package will enable you to connect with our data.
+The `myPersonality` R package provides easy access to a rich dataset collected by [Cambridge Psychometrics Centre](http://www.psychometrics.cam.ac.uk). To learn more about the dataset itself, please visit myPersonality research wiki at http://mypersonality.org. Because the dataset is very large (i.e. millions of respondents), the easiest way for our collaborators to access the data is through a connection to our database.
 
 # Data access
-Because the dataset contains sensitive information, it is made available only to academic researchers by special permission. If you are interested in using the dataset in your research, please [contact us](http://mypersonality.org/wiki/doku.php?id=database_use_guidelines) to request access privileges.
+Because the dataset contains sensitive information, it is made available only to academic researchers by special permission. If you are interested in using the dataset in your research, please [contact us](http://mypersonality.org/wiki/doku.php?id=database_use_guidelines) to request access privileges. **Please make sure you have requested (and received) your user name and password from Cambridge Psychometrics Centre before proceeding with installation.**
 
 # Installation
-We aim to make accessing the dataset as easy as possible, but getting set up will require a few steps. Please follow these instructions carefully. You need to do the setup only once. **Please make sure you have requested (and received) your user name and password from Cambridge Psychometrics Centre before proceeding.**
+We aim to make accessing the dataset as easy as possible, but getting set up will require a few steps. Please follow these instructions carefully. You need to do the setup only once.
 
 First, you need to install the `myPersonality` package itself. You can install the prototype version on [github](https://github.com/vanderlowe/myPersonality) using `devtools`:
 ```
@@ -16,11 +16,13 @@ library(devtools)
 install_github('myPersonality',  username='vanderlowe')
 ```
 ## Install database drivers (Windows users only)
-On computers running Windows operating system, `myPersonality` depends on `RODBC` package to establish database connections. `RODBC` needs a working _MySQL ODBC driver_ and a _Data Source Name_ (DSN) to connect to myPersonality database.
+On computers running Windows operating system, `myPersonality` depends on `RODBC` package to establish database connections, which requires a working _MySQL ODBC driver_ and a _Data Source Name_ (DSN).
 
-### MySQL driver ODBC driver and Data Source Name
-0. First, download and install the _MySQL ODBC driver_ from [MySQL developer website](http://dev.mysql.com/downloads/connector/odbc/5.2.html#downloads). On the download page, find _Windows (x86, 64-bit), MSI Installer_. It should work for most users.
-1. Once installed, click the Start menu and type `ODBC` into the search box.
+### MySQL ODBC driver
+Please download and install the _MySQL ODBC driver_ from [MySQL developer website](http://dev.mysql.com/downloads/connector/odbc/5.2.html#downloads). On the download page, find _Windows (x86, 64-bit), MSI Installer_. It should work for most users.
+
+### Data Source Name
+1. Once you have installed the MySQL ODBC driver, click the Start menu and type `ODBC` into the search box.
 2. Click "Data Source (ODBC)" as it appears in the search results.
 3. Click the "System DSN" tab. 
 4. Select "Add..." in this tab.
@@ -29,7 +31,7 @@ On computers running Windows operating system, `myPersonality` depends on `RODBC
 7. In the "TCP/IP Server field:", type `alex.e-psychometrics.com`. **Note to Michal and David: The production server details go here when the server is up.**
 8. Leave "Description", "User", "Password", and "Database" fields blank. The "Port:" field should read 3306 by default.
 9. Optionally, click "Details >>" and check the box "Use compression". This will improve data download speeds.
-9. Click "OK" to save the DSN.
+10. Click "OK" to save the DSN.
 
 # Example usage: Novice users
 At the start of each session, you must load the `myPersonality` package into memory. You can do this by typing:
@@ -69,7 +71,7 @@ Let's say we want to get the age, gender, and relationship status of all users a
 ```
 people <- participants("age", "gender", "relationship_status")
 ```
-You can provide as many or as few variable names as you wish. However, keep in mind that more variables mean more data to transfer and requesting many variables may be very slow.
+You can provide as many or as few variable names as you wish. However, keep in mind that more variables mean more data to transfer and requesting many variables at a time may be very slow.
 
 ### Filtering data
 You can also easily filter the results by providing the criteria with the variable name. Let's get the same data as above for participants over the age of 90 and assign the results to variable `elderly`.
