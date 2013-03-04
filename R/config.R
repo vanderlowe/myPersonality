@@ -12,7 +12,7 @@ config <- function() {
   Sys.setenv("myPersonality_host" = "alex.e-psychometrics.com")
   Sys.setenv("myPersonality_database" = "cpw_myPersonality")
   
-  uid <- readline("Please enter your username: ")
+  uid <- readline("Please enter your user name: ")
   Sys.setenv("myPersonality_user" = uid)
   
   pwd <- readline("Please enter your password: ")

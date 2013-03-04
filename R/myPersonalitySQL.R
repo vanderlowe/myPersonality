@@ -43,7 +43,8 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     }
     
     # Establish MySQL connection
-    con <- dbConnect("MySQL", host = myPersonality_host, user = myPersonality_user, password = myPersonality_password, dbname = myPersonality_database)
+    # client.flag=32 enables compression
+    con <- dbConnect("MySQL", host = myPersonality_host, user = myPersonality_user, password = myPersonality_password, dbname = myPersonality_database, client.flag=32)
     results <- dbGetQuery(con, query)
     dbDisconnect(con)
     return(results)
