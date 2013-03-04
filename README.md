@@ -1,32 +1,32 @@
 myPersonality
 =============
 
-The `myPersonality` R package provides easy access to a rich dataset collected by [Cambridge Psychometrics Centre](http://www.psychometrics.cam.ac.uk). To learn more about the dataset itself, please visit myPersonality research wiki at http://mypersonality.org. Because the dataset is very large (i.e. millions of respondents), the easiest way for our collaborators to access the data is through a connection to our database.
+The _myPersonality_ R package provides easy access to a rich dataset by the same name that was created by [Cambridge Psychometrics Centre](http://www.psychometrics.cam.ac.uk). To learn more about the dataset itself, please visit [myPersonality research wiki](http://mypersonality.org). Because the dataset contains millions of respondents, the easiest way to access the data is through a database connection. The _myPersonality_ package provides a set of utility functions to request specific variables of interest from the data.
 
 # Data access
-Because the dataset contains sensitive information, it is made available only to academic researchers by special permission. If you are interested in using the dataset in your research, please [contact us](http://mypersonality.org/wiki/doku.php?id=database_use_guidelines) to request access privileges. **Please make sure you have requested (and received) your user name and password from Cambridge Psychometrics Centre before proceeding with installation.**
+The dataset is only available by special permission to our academic collaborators. If you are interested in using the dataset in your research, please [contact us](http://mypersonality.org/wiki/doku.php?id=database_use_guidelines) to request access privileges. **Please make sure you have received your user name and password from Cambridge Psychometrics Centre before proceeding with installation.**
 
 # Installation
-We aim to make accessing the dataset as easy as possible, but getting set up will require a few steps. Please follow these instructions carefully. You need to do the setup only once.
+Please follow these instructions carefully. You need to do the setup only once.
 
-First, you need to install the `myPersonality` package itself. You can install the prototype version on [github](https://github.com/vanderlowe/myPersonality) using `devtools`:
+First, you need to install the _myPersonality_ package itself. You can install the prototype version available on [github](https://github.com/vanderlowe/myPersonality) using _[devtools](https://github.com/hadley/devtools/)_ package:
 ```
 install.packages("devtools") 
 library(devtools)
 install_github('myPersonality',  username='vanderlowe')
 ```
 ## Install database drivers (Windows users only)
-On computers running Windows operating system, `myPersonality` depends on `RODBC` package to establish database connections, which requires a working _MySQL ODBC driver_ and a _Data Source Name_ (DSN).
+On computers running Windows operating system, _myPersonality_ depends on _RODBC_ package to establish database connections. This requires the installation of a _MySQL ODBC driver_ and _Data Source Name_ (DSN) on your computer.
 
 ### MySQL ODBC driver
 Please download and install the _MySQL ODBC driver_ from [MySQL developer website](http://dev.mysql.com/downloads/connector/odbc/5.2.html#downloads). On the download page, find _Windows (x86, 64-bit), MSI Installer_. It should work for most users.
 
 ### Data Source Name
-1. Once you have installed the MySQL ODBC driver, click the Start menu and type `ODBC` into the search box.
-2. Click "Data Source (ODBC)" as it appears in the search results.
-3. Click the "System DSN" tab. 
-4. Select "Add..." in this tab.
-5. Choose "MySQL ODBC 5.2w Driver"
+1. Once you have installed the _MySQL ODBC driver_, click the Windows Start menu and type `ODBC` into the search box.
+2. Click on "Data Source (ODBC)" in the search results. Wait for the program to open.
+3. Select the "System DSN" tab. 
+4. Click the "Add..." button.
+5. Choose "MySQL ODBC 5.2w Driver".
 6. In the "Data Source Name:" field, type `myPersonality`.
 7. In the "TCP/IP Server field:", type `alex.e-psychometrics.com`. **Note to Michal and David: The production server details go here when the server is up.**
 8. Leave "Description", "User", "Password", and "Database" fields blank. The "Port:" field should read 3306 by default.
@@ -34,17 +34,32 @@ Please download and install the _MySQL ODBC driver_ from [MySQL developer websit
 10. Click "OK" to save the DSN.
 
 # Example usage: Novice users
-At the start of each session, you must load the `myPersonality` package into memory. You can do this by typing:
+At the start of each session, you must load the _myPersonality_ package to make the functions available in R. You can do this by typing:
 ```
 library(myPersonality)
 ```
 
 ## Testing the connection
-To test whether your connection works, you can simply type the following:
+To test that your connection works, type the following:
+```
+myPersonality()
+```
+
+First, you should be prompted for your user name and password. Once you enter these, you should see the following message:
+```
+Currently, the following functions are available:
+participants()
+adress()
+employers()
+```
+Each of these functions gives you access to data in our database.
+
+## Loading data
+Let's start with basic information about participants in myPersonality database. To see what variables are available, please type:
 ```
 participants()
 ```
-First, you should be prompted for your user name and password. Once you enter these, you should see the following message:
+You should see the following message.
 ```
 You must request at least one variable.
 You can choose one or more of the following:
@@ -66,7 +81,6 @@ timezone
 ```
 Since we did not specify which variable (i.e., a field in the database) we wanted, the function provided us with a helpful list of available variables.
 
-## Loading data
 Let's say we want to get the age, gender, and relationship status of all users and assign it to variable `people`. For this, you would type:
 ```
 people <- participants("age", "gender", "relationship_status")

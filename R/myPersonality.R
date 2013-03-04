@@ -1,3 +1,14 @@
-myPersonality <- function(x) {
-  return(x)
+myPersonality <- function() {
+  all.tables <- myPersonalitySQL("SHOW TABLES;")[,1]
+  
+  defined.funcs <- data.table(
+    table = c("demog", "address", "fb_employer"),
+    func =  c("participants", "adress", "employers")
+  )
+  cat("Currently, the following functions are available:\n")
+  
+  for (f in defined.funcs$func) {
+    cat(f)
+    cat("()\n")
+  }
 }
