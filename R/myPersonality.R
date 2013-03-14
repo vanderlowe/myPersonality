@@ -3,7 +3,7 @@ myPersonality <- function() {
   
   defined.funcs <- data.table(
     table = c("demog", "address", "fb_employer", "swl", "fb_likes", "fb_user_likes"),
-    func =  c("participants", "adress", "employers", "satisfaction_with_life","facebook_likes", "participant_likes")
+    func =  c("participants", "address", "employers", "satisfaction_with_life","facebook_likes", "participant_likes")
   )
   cat("Currently, the following functions are available:\n")
   
