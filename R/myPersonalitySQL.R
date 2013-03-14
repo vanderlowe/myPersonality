@@ -45,7 +45,16 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     # Establish MySQL connection
     # client.flag=32 enables compression
     con <- dbConnect("MySQL", host = myPersonality_host, user = myPersonality_user, password = myPersonality_password, dbname = myPersonality_database, client.flag=32)
-    results <- dbGetQuery(con, query)
+    
+    # Log query before execution (helps to identify user queries that fail to execute)
+    dbGetQuery(con, sprintf("INSERT INTO usage_log (query, user) VALUES ('%s','%s')", query, myPersonality_user))
+    
+    # Run query with timer
+    timer <- system.time(results <- dbGetQuery(con, query))
+    
+    # Log query execution time after execution (helps to identify queries could be optimized)
+    dbGetQuery(con, sprintf("UPDATE usage_log SET execution_time = %f WHERE id = (select max(`id`) as `id` from (select id from usage_log where user = '%s') as x)", timer[3], myPersonality_user))
+    
     dbDisconnect(con)
     return(results)
     
@@ -59,9 +68,17 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     
     channel <- odbcConnect("myPersonality")
     sqlQuery(channel, sprintf("USE %s;", myPersonality_database)) # Use the right database
-    results <- sqlQuery(channel, query)
+    
+    # Log query before execution (helps to identify user queries that fail to execute)
+    sqlQuery(channel, sprintf("INSERT INTO usage_log (query, user) VALUES ('%s','%s')", query, myPersonality_user))
+    
+    # Run query with timer
+    timer <- system.time(results <- sqlQuery(channel, query))
+    
+    # Log query execution time after execution (helps to identify queries could be optimized)
+    sqlQuery(channel, sprintf("UPDATE usage_log SET execution_time = %f WHERE id = (select max(`id`) as `id` from (select id from usage_log where user = '%s') as x)", timer[3], myPersonality_user))
+    
     odbcClose(channel)
     return(results)
   }
-  
 }

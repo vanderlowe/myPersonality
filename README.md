@@ -114,5 +114,6 @@ elderly.in.Miami <- myPersonalitySQL("
 
 # Product Backlog
 * Self-documenting database
+* User activity log (needs INSERT and UPDATE privileges for usage_log table)
 * Automatic detection of additional tables and variables available in the database
 * Production database at sql.mypersonality.org
