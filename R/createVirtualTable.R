@@ -9,7 +9,7 @@ createVirtualTable <- function(table.name, ...) {
   valid.columns <- o$table.definition$Field
   
   # Identify primary key
-  o$key <- subset(o$table.definition, Key == "PRI")$Field
+  o$key <- as.character(subset(o$table.definition, Key == "PRI")$Field)
   
   # Identify columns and WHERE statements from arguments supplied by user
   args <- processFunctionArguments(...)
