@@ -62,11 +62,11 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     # PC code in here
     if (!require(RODBC)) {
       # Install RODBC if not available
-      install.packages("RMySQL")
+      install.packages("RODBC")
       require(RODBC)
     }
     
-    channel <- odbcConnect("myPersonality")
+    channel <- odbcConnect("myPersonality", uid = myPersonality_user, pwd = myPersonality_password)
     sqlQuery(channel, sprintf("USE %s;", myPersonality_database)) # Use the right database
     
     # Log query before execution (helps to identify user queries that fail to execute)
