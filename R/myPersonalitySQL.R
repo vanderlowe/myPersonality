@@ -47,13 +47,13 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     con <- dbConnect("MySQL", host = myPersonality_host, user = myPersonality_user, password = myPersonality_password, dbname = myPersonality_database, client.flag=32)
     
     # Log query before execution (helps to identify user queries that fail to execute)
-    dbGetQuery(con, sprintf("INSERT INTO _usage_log (query, user) VALUES ('%s','%s')", query, myPersonality_user))
+    dbGetQuery(con, sprintf("INSERT INTO `_usage_log` (query, user) VALUES ('%s','%s')", query, myPersonality_user))
     
     # Run query with timer
     timer <- system.time(results <- dbGetQuery(con, query))
     
     # Log query execution time after execution (helps to identify queries could be optimized)
-    dbGetQuery(con, sprintf("UPDATE _usage_log SET execution_time = %f WHERE id = (select max(`id`) as `id` from (select id from _usage_log where user = '%s') as x)", timer[3], myPersonality_user))
+    dbGetQuery(con, sprintf("UPDATE `_usage_log` SET `execution_time` = %f WHERE `id` = (SELECT MAX(`id`) AS `id` FROM (SELECT `id` FROM `_usage_log` WHERE `user` = '%s') AS x)", timer[3], myPersonality_user))
     
     dbDisconnect(con)
     return(results)
@@ -70,13 +70,13 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     sqlQuery(channel, sprintf("USE %s;", myPersonality_database)) # Use the right database
     
     # Log query before execution (helps to identify user queries that fail to execute)
-    sqlQuery(channel, sprintf("INSERT INTO _usage_log (query, user) VALUES ('%s','%s')", query, myPersonality_user))
+    sqlQuery(channel, sprintf("INSERT INTO `_usage_log` (query, user) VALUES ('%s','%s')", query, myPersonality_user))
     
     # Run query with timer
     timer <- system.time(results <- sqlQuery(channel, query))
     
     # Log query execution time after execution (helps to identify queries could be optimized)
-    sqlQuery(channel, sprintf("UPDATE _usage_log SET execution_time = %f WHERE id = (select max(`id`) as `id` from (select id from _usage_log where user = '%s') as x)", timer[3], myPersonality_user))
+    sqlQuery(channel, sprintf("UPDATE `_usage_log` SET `execution_time` = %f WHERE `id` = (SELECT MAX(`id`) AS `id` FROM (SELECT `id` FROM `_usage_log` WHERE `user` = '%s') AS x)", timer[3], myPersonality_user))
     
     odbcClose(channel)
     return(results)
