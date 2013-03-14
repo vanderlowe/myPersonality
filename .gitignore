@@ -5,6 +5,7 @@
 .Rproj.user
 # RStudio project files
 .Rproj
-.html
 .Rbuildignore
 myPersonality.Rproj
+sandbox/
+README.html
