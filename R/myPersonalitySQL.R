@@ -51,7 +51,7 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     
     # Run query with timer
     timer <- system.time(results <- dbGetQuery(con, query))
-    
+   
     # Log query execution time after execution (helps to identify queries could be optimized)
     dbGetQuery(con, sprintf("UPDATE `_usage_log` SET `execution_time` = %f WHERE `id` = (SELECT MAX(`id`) AS `id` FROM (SELECT `id` FROM `_usage_log` WHERE `user` = '%s') AS x)", timer[3], myPersonality_user))
     
@@ -71,7 +71,7 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
     
     # Log query before execution (helps to identify user queries that fail to execute)
     sqlQuery(channel, sprintf("INSERT INTO `_usage_log` (query, user) VALUES ('%s','%s')", query, myPersonality_user))
-    
+        
     # Run query with timer
     timer <- system.time(results <- sqlQuery(channel, query))
     

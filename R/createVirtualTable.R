@@ -1,4 +1,4 @@
-createVirtualTable <- function(table.name, ...) {
+createVirtualTable <- function(table.name, getData = T, ...) {
   
   # Create a placeholder list for object data
   o <- list()
@@ -30,15 +30,16 @@ createVirtualTable <- function(table.name, ...) {
   o$where <- args$where
   
   class(o) <- "virtual.table"
-  return(getData(o))
+  if (getData) {
+    return(getData(o))
+  } else {
+    return(o)
+  }
+  
 }
 
 print.virtual.table <- function(x) {
   cat(generateSQL(x),"\n")
-}
-
-"+.virtual.table" <- function(x,y) {
-  cat("This needs to be fixed")
 }
 
 getData <- function(x) {
