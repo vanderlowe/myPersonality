@@ -1,4 +1,4 @@
-createVirtualTable <- function(table.name, getData = T, ...) {
+createVirtualTable <- function(table.name, ...) {
   
   # Create a placeholder list for object data
   o <- list()
@@ -30,12 +30,7 @@ createVirtualTable <- function(table.name, getData = T, ...) {
   o$where <- args$where
   
   class(o) <- "virtual.table"
-  if (getData) {
-    return(getData(o))
-  } else {
-    return(o)
-  }
-  
+  return(getData(o))
 }
 
 print.virtual.table <- function(x) {
@@ -45,6 +40,11 @@ print.virtual.table <- function(x) {
 getData <- function(x) {
   suppressPackageStartupMessages(require(data.table))
   sql.data <- data.table(myPersonalitySQL(generateSQL(x)))
-  setkeyv(sql.data, x$key)
+  if (!identical(x$key, character(0))) {
+    setkeyv(sql.data, x$key)
+  } else {
+    # There is no primary key for the table
+  }
+  
   return(sql.data)
 }
