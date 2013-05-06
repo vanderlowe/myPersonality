@@ -8,8 +8,8 @@
 #' @keywords manip
 #' @export
 #' @examples
-#' myPersonality()
-#' myPersonality("SELECT * FROM demog")
+#' #myPersonality()
+#' #myPersonality("SELECT * FROM demog")
 
 myPersonalitySQL <- function(query = "SHOW TABLES;") {
   

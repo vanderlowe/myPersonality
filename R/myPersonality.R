@@ -6,8 +6,8 @@
 #' @keywords manip
 #' @export
 #' @examples
-#' participants()
-#' participants("age > 90")
+#' #participants()
+#' #participants("age > 90")
 
 myPersonality <- function() {  
   defined.funcs <- myPersonalitySQL("SELECT display_name as func FROM `_meta_tables` ORDER BY func")
