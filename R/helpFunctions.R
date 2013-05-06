@@ -40,6 +40,13 @@ listVariables <- function(table.name) {
   return(variables)
 }
 
+explainVariable <- function(variable.name) {
+  sql <- sprintf('SELECT * FROM _meta_variables WHERE name = "%s"', variable.name)
+  results <- myPersonalitySQL(sql)
+  class(results) <- "variable.help"
+  return(results)
+}
+
 showInfo <- function(x, prefix = "", postfix = "\n") {
   if (!is.na(x)) {
     if (!prefix == "") {cat(prefix)}
@@ -49,7 +56,7 @@ showInfo <- function(x, prefix = "", postfix = "\n") {
 
 print.table.help <- function(x) {
   info <- x$table.info
-  showInfo(info$details, "\n\n")
+  showInfo(info$details, "")
   showInfo(info$note, "\nNOTE: ", "\n\n")
   showInfo(info$citation, "For more information about these data, please see: ")
   showInfo(info$url,"", "\n\n")
@@ -57,7 +64,7 @@ print.table.help <- function(x) {
   cat("This table contains the following variables:\n")
   print(listVariables(info$display_name))
   
-  showInfo(x$related, "\n\nPlease use ", "() to see related data.")
+  showInfo(x$related, "\nPlease use ", "() to see related data.")
 }
 
 print.variable.list.help <- function(x) {
@@ -66,19 +73,37 @@ print.variable.list.help <- function(x) {
   
   if ("note" %in% names(x)) {  
     for (i in 1:nrow(x)) {
-      if (is.na(x[i, "note"])) {
+      if (x[i, "note"] %in% c(NA,""," ")) {
         x[i, "note"] <- ""
       } else {
         x[i, "note"] <- ""
         x[i, "description"] <- paste(gsub("^ ", "", x[i, "description"]), "*", sep = "")
+        notes.flag <- TRUE
       }
-      notes.flag <- TRUE
     }
     x$note <- NULL
   }
   
   write.table(format(x, justify="left"), row.names=F, col.names=F, quote=F, sep = "    ")
   if (notes.flag) {
-    cat("* Use command 'explainVariable(\"variable_name_here\")' to see additional variable notes.")
+    cat("\n* Use command 'explainVariable(\"variable_name_here\")' to see additional variable notes.")
   }
+}
+
+print.variable.help <- function(x) {
+  class(x) <- "data.frame"
+  if (nrow(x) > 1) {
+    cat("Multiple tables contain a variable by that name.\n")
+    for (i in 1:nrow(x)) {
+      cat(i)
+      cat(":", getDisplayName(x$parent_table[i]), "\n")
+    }
+    n <- readline("Select the table you are interested in by entering its number from the above list: ")
+  }
+  x <- x[n,]
+  
+  showInfo(x$name, "Variable: ")
+  showInfo(x$description, "Description: ","\n")
+  showInfo(x$note, "\nDetails:\n")
+  
 }
