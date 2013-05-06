@@ -12,10 +12,10 @@ explainTable <- function(table.name) {
   # Check if there are related tables
   sql <- sprintf('SELECT child_table FROM `_meta_related_tables` WHERE parent_table = "%s"', o$table.info$db_name)
   o$related <- getDisplayName(myPersonalitySQL(sql))
-  if (is.null(o$related)) {
+  if (nrow(o$related) == 0) {
     o$related <- NA
   } else {
-    o$related <- o$related
+    o$related <- getDisplayName(o$related[, 1])
   }
   
   class(o) <- "table.help"
