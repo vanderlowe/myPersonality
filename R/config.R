@@ -18,12 +18,12 @@ config <- function() {
     Sys.setenv("myPersonality_password" = "foobar")
   }
   
-  if (Sys.getenv("myPersonality_user") == "") {
+  if (Sys.getenv("myPersonality_user") == "" | interactive()) {
     uid <- readline("Please enter your user name: ")
     Sys.setenv("myPersonality_user" = uid)
   }
   
-  if (Sys.getenv("myPersonality_password") == "") {
+  if (Sys.getenv("myPersonality_password") == "" | interactive()) {
     pwd <- readline("Please enter your password: ")
     Sys.setenv("myPersonality_password" = pwd)
   }
