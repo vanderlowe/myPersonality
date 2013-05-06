@@ -47,8 +47,21 @@ explainVariable <- function(variable.name) {
   return(results)
 }
 
+findVariable <- function(query) {
+  sql <- sprintf('SELECT * FROM _meta_variables WHERE name LIKE "%%%s" OR description LIKE "%%%s%%" OR note LIKE "%%%s%%"', query, query, query)
+  results <- myPersonalitySQL(sql)
+  if (nrow(results) == 0) {
+    message("No results.")
+    return(invisible(NULL))
+  }
+  class(results) <- "variable.help"
+  return(results)
+}
+
+
 showInfo <- function(x, prefix = "", postfix = "\n") {
-  if (!is.na(x)) {
+  if (is.null(x)) {return(invisible(x))}
+  if (!x %in% c(NA, "", " ")) {
     if (!prefix == "") {cat(prefix)}
     cat(x, postfix, sep = "")
   }
@@ -93,17 +106,19 @@ print.variable.list.help <- function(x) {
 print.variable.help <- function(x) {
   class(x) <- "data.frame"
   if (nrow(x) > 1) {
-    cat("Multiple tables contain a variable by that name.\n")
+    cat("The query returns multiple results.\n")
     for (i in 1:nrow(x)) {
       cat(i)
-      cat(":", getDisplayName(x$parent_table[i]), "\n")
+      cat(":", getDisplayName(x$parent_table[i]), "-", x$name[i], "\n")
     }
-    n <- readline("Select the table you are interested in by entering its number from the above list: ")
+    n <- readline("Please select one from the list by entering its number: ")
+    n <- as.numeric(n)
+    if (class(n) != "numeric") {stop("You must enter an integer.")}
   }
   x <- x[n,]
   
   showInfo(x$name, "Variable: ")
+  showInfo(getDisplayName(x$parent_table), "Access function: ", "()\n")
   showInfo(x$description, "Description: ","\n")
   showInfo(x$note, "\nDetails:\n")
-  
 }
