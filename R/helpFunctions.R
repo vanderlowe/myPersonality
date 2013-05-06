@@ -8,10 +8,10 @@ explainTable <- function(table.name) {
   if (class(o) == "try-error" || nrow(o$table.info) == 0) {
     stop("Please check your table name.")
   }
-    
+  
   # Check if there are related tables
   sql <- sprintf('SELECT child_table FROM `_meta_related_tables` WHERE parent_table = "%s"', o$table.info$db_name)
-  o$related <- getDisplayName(myPersonalitySQL(sql))
+  o$related <- myPersonalitySQL(sql)
   if (nrow(o$related) == 0) {
     o$related <- NA
   } else {
