@@ -29,6 +29,6 @@ config <- function() {
   }
   
   if (interactive()) {
-    system.file("inst/tableDefinitions.R", package = "myPersonality", mustWork = T)
+    source(system.file("tableDefinitions.R", package = "myPersonality", mustWork = T))
   }
 }
