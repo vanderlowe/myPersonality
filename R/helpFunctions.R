@@ -15,7 +15,7 @@ explainTable <- function(table.name) {
   if (is.null(o$related)) {
     o$related <- NA
   } else {
-    o$related <- o$related[, 1]
+    o$related <- o$related
   }
   
   class(o) <- "table.help"
