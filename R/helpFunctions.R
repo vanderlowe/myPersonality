@@ -11,8 +11,8 @@ explainTable <- function(table.name) {
     
   # Check if there are related tables
   sql <- sprintf('SELECT child_table FROM `_meta_related_tables` WHERE parent_table = "%s"', o$table.info$db_name)
-  o$related <- myPersonalitySQL(sql)
-  if (nrow(o$related) == 0) {
+  o$related <- getDisplayName(myPersonalitySQL(sql))
+  if (is.null(o$related)) {
     o$related <- NA
   } else {
     o$related <- o$related[, 1]
