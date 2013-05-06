@@ -9,8 +9,14 @@
 #' #config()
 
 config <- function() {
+  
   Sys.setenv("myPersonality_host" = "alex.e-psychometrics.com")
   Sys.setenv("myPersonality_database" = "cpw_myPersonality")
+  
+  if (!interactive()) {
+    Sys.setenv("myPersonality_user" = "connection_test")
+    Sys.setenv("myPersonality_password" = "foobar")
+  }
   
   if (Sys.getenv("myPersonality_user") == "") {
     uid <- readline("Please enter your user name: ")

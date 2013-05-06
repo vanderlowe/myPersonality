@@ -1,7 +1,7 @@
 # This script creates functions to access data based on the tables in the database.
 # Please note that the table names must be matched to display names in _meta_tables table.
 
-all.tables <- myPersonalitySQL("SHOW TABLES;")[,1]
+all.tables <- myPersonalitySQL("SELECT db_name FROM _meta_tables")[,1]
 
 for (this.table in all.tables) {
   if (substring(this.table, 1, 1) == "_") {next}  # Skip meta tables
