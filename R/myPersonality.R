@@ -11,7 +11,7 @@
 
 myPersonality <- function() {  
   defined.funcs <- myPersonalitySQL("SELECT display_name as func FROM `_meta_tables` ORDER BY func")
-  cat("Currently, the following data are available:\n")
+  cat("Currently, the following data access functions are available:\n")
   
   for (f in defined.funcs$func) {
     cat(f)

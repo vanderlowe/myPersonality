@@ -1,9 +1,9 @@
 createVirtualTable <- function(table.name, ...) {
-  
   # Create a placeholder list for object data
   o <- list()
   o$table.name <- table.name
-    
+  o$display.name <- getDisplayName(table.name)
+  
   # Get table definition from the database
   o$table.definition <- myPersonalitySQL(sprintf("SHOW COLUMNS FROM %s", table.name))
   valid.columns <- o$table.definition$Field
@@ -13,13 +13,15 @@ createVirtualTable <- function(table.name, ...) {
   
   # Identify columns and WHERE statements from arguments supplied by user
   args <- processFunctionArguments(...)
+  
+  # If no arguments were given, display brief help instead.
   if (is.null(args)) {
-    null.msg <- sprintf("You must request at least one variable.\nYou can choose one or more of the following:\n%s", paste(valid.columns, collapse = "\n"))
-    message(null.msg)
+    print(explainTable(o$display.name))
     return(invisible(NULL))
   }
   
-  o$columns <- c(o$key, args$columns) # Always include primary key for merges later on
+  o$columns <- c(o$key, args$columns) # Always include primary key for merges later on.
+  # Note: Cases in which there is no primary key will be handled downstream by getData()
   
   if (!all(o$columns %in% valid.columns)) {
     wrong.columns <- paste(setdiff(o$columns, valid.columns), collapse = ", ")
