@@ -27,4 +27,8 @@ config <- function() {
     pwd <- readline("Please enter your password: ")
     Sys.setenv("myPersonality_password" = pwd)
   }
+  
+  if (interactive()) {
+    system.file("inst/tableDefinitions.R", package = "myPersonality", mustWork = T)
+  }
 }
