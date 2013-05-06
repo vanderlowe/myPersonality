@@ -13,6 +13,8 @@
 
 myPersonalitySQL <- function(query = "SHOW TABLES;") {
   
+  if (!interactive()) {return(NULL)}
+  
   # Check whether necessary environment variables exist. If not, run configuration.
   if (all(
         c(Sys.getenv("myPersonality_user"), 
