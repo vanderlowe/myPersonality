@@ -11,12 +11,12 @@
 #' @examples
 #' # myPersonality()  # Prompts for your user name and password for database connection.
 #' # participants()  # Show information about participants, including available variables.
-#' # participants(age, gender)  # Retrieve age and gender data for all participants.
-#' # participants(age > 90, gender)  # Retrieve age and gender data for participants older than 90 years.
+#' # participants("age", "gender")  # Retrieve age and gender data for all participants.
+#' # participants("age > 90", "gender")  # Retrieve age and gender data for participants older than 90 years.
 
 myPersonality <- function() {  
   defined.funcs <- myPersonalitySQL("SHOW TABLES")[,1]
-  cat("Currently, the following data access functions are available:\n")
+  cat("Currently, the following data access functions are available to you:\n")
   
   for (f in defined.funcs) {
     if (substring(f, 1, 1) == "_") {next}
