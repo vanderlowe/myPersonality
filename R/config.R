@@ -1,4 +1,4 @@
-config <- function(user, password) {
+config <- function(user = NULL, password = NULL) {
   
   Sys.setenv("myPersonality_host" = "alex.e-psychometrics.com")
   Sys.setenv("myPersonality_database" = "cpw_myPersonality")
@@ -9,7 +9,7 @@ config <- function(user, password) {
   }
   
   if (Sys.getenv("myPersonality_user") == "" | interactive()) {
-    if (missing(user)) {
+    if (is.null(user)) {
       uid <- readline("Please enter your user name: ")
       Sys.setenv("myPersonality_user" = uid)
     } else {
@@ -19,7 +19,7 @@ config <- function(user, password) {
   }
   
   if (Sys.getenv("myPersonality_password") == "" | interactive()) {
-    if (missing(password)) {
+    if (is.null(password)) {
       pwd <- readline("Please enter your password: ")
       Sys.setenv("myPersonality_password" = pwd)
     } else {
