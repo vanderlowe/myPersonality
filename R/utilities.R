@@ -1,6 +1,6 @@
 getDisplayName <- function(db_name) {
   # Get usr-friendly table name based on the actual table name
-  if (exists(.meta.tables)) {
+  if (exists(".meta.tables")) {
     # Local cache
     return(.meta.tables[.meta.tables$db_name == db_name,]$display_name)
   } else {
@@ -12,7 +12,7 @@ getDisplayName <- function(db_name) {
 
 getDbName <- function(display_name) {
   # Get usr-friendly table name based on the actual table name
-  if (exists(.meta.tables)) {
+  if (exists(".meta.tables")) {
     # Local cache
     return(.meta.tables[.meta.tables$display_name == display_name,]$db_name)
   } else {
