@@ -14,8 +14,8 @@
 #' # participants("age", "gender")  # Retrieve age and gender data for all participants.
 #' # participants("age > 90", "gender")  # Retrieve age and gender data for participants older than 90 years.
 
-myPersonality <- function() {  
-  defined.funcs <- myPersonalitySQL("SHOW TABLES")[,1]
+myPersonality <- function(user = NULL, password = NULL) {  
+  defined.funcs <- myPersonalitySQL("SHOW TABLES", user = user, password = password)[,1]
   cat("Currently, the following data access functions are available to you:\n")
   
   for (f in defined.funcs) {

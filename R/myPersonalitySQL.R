@@ -11,7 +11,7 @@
 #' #myPersonality()
 #' #myPersonality("SELECT * FROM demog")
 
-myPersonalitySQL <- function(query = "SHOW TABLES;") {
+myPersonalitySQL <- function(query = "SHOW TABLES;", user = NULL, password = NULL) {
   
   if (!interactive()) {return(NULL)}
   
@@ -23,7 +23,7 @@ myPersonalitySQL <- function(query = "SHOW TABLES;") {
           Sys.getenv("myPersonality_database")
           ) == "")
       ) {
-    config()
+    config(user, password)
   }
   
   # Get environment variables needed for db access
