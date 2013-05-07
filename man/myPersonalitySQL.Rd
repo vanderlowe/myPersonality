@@ -2,7 +2,8 @@
 \alias{myPersonalitySQL}
 \title{Execute SQL query on myPersonality database server.}
 \usage{
-  myPersonalitySQL(query = "SHOW TABLES;")
+  myPersonalitySQL(query = "SHOW TABLES;", user = NULL,
+    password = NULL)
 }
 \arguments{
   \item{query}{SQL query string to be executed. Defaults to

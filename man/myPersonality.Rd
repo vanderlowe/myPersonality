@@ -2,7 +2,7 @@
 \alias{myPersonality}
 \title{Initialize connection to myPersonality database server.}
 \usage{
-  myPersonality()
+  myPersonality(user = NULL, password = NULL)
 }
 \description{
   This function starts your session and sets up your
