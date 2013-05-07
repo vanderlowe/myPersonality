@@ -1,2 +1,5 @@
+export(explainTable)
+export(explainVariable)
+export(findVariable)
 export(myPersonality)
 export(myPersonalitySQL)
