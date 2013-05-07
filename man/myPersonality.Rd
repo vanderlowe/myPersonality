@@ -21,8 +21,8 @@
 \examples{
 # myPersonality()  # Prompts for your user name and password for database connection.
 # participants()  # Show information about participants, including available variables.
-# participants(age, gender)  # Retrieve age and gender data for all participants.
-# participants(age > 90, gender)  # Retrieve age and gender data for participants older than 90 years.
+# participants("age", "gender")  # Retrieve age and gender data for all participants.
+# participants("age > 90", "gender")  # Retrieve age and gender data for participants older than 90 years.
 }
 \keyword{manip}
 
