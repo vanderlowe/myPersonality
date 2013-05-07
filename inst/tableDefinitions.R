@@ -8,7 +8,7 @@ for (this.table in all.tables) {
   
   # Create functions from database tables
   function.template <- "%s <- function(...) { mySQL.table.name <- '%s'
-    return(createVirtualTable(mySQL.table.name, ...))
+    return(myPersonality:::createVirtualTable(mySQL.table.name, ...))
   }"
   
   sql <- sprintf('SELECT display_name FROM `_meta_tables` WHERE db_name = "%s"', this.table)
