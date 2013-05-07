@@ -2,6 +2,7 @@
 # Please note that the table names must be matched to display names in _meta_tables table.
 
 all.tables <- myPersonalitySQL("SHOW TABLES")[,1]
+.meta.tables <- myPersonalitySQL("SELECT * FROM _meta_tables")
 
 for (this.table in all.tables) {
   if (substring(this.table, 1, 1) == "_") {next}  # Skip meta tables
