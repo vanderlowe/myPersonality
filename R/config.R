@@ -1,13 +1,3 @@
-#' Set connection details to environment variables.
-#'
-#' This function sets user name, password, host, and database name to environment variables
-#' for later use.
-#' 
-#' @param query SQL query string to be executed. Defaults to "SHOW TABLES;"
-#' @keywords manip
-#' @examples
-#' #config()
-
 config <- function() {
   
   Sys.setenv("myPersonality_host" = "alex.e-psychometrics.com")
