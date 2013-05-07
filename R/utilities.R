@@ -25,6 +25,6 @@ showInfo <- function(x, prefix = "", postfix = "\n") {
   if (is.null(x)) {return(invisible(x))}
   if (!x %in% c(NA, "", " ")) {
     if (!prefix == "") {cat(prefix)}
-    cat(x, postfix, sep = "")
+    cat(as.character(x), postfix, sep = "")
   }
 }

@@ -22,7 +22,7 @@ myPersonality <- function() {
     if (substring(f, 1, 1) == "_") {next}
     f.name <- getDisplayName(f)
     if (!identical(f.name, character(0))) {
-      cat(f.name)
+      cat(as.character(f.name))
       cat("()\n")  
     }
     
