@@ -20,7 +20,11 @@ myPersonality <- function() {
   
   for (f in defined.funcs) {
     if (substring(f, 1, 1) == "_") {next}
-    cat(getDisplayName(f))
-    cat("()\n")
+    f.name <- getDisplayName(f)
+    if (!identical(f.name, character(0))) {
+      cat(f.name)
+      cat("()\n")  
+    }
+    
   }
 }
