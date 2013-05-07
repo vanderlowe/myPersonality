@@ -18,7 +18,7 @@ myPersonality <- function() {
   defined.funcs <- myPersonalitySQL("SHOW TABLES")[,1]
   cat("Currently, the following data access functions are available:\n")
   
-  for (f in defined.funcs$func) {
+  for (f in defined.funcs) {
     if (substring(f, 1, 1) == "_") {next}
     cat(f)
     cat("()\n")
