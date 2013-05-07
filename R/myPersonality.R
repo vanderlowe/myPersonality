@@ -1,19 +1,25 @@
-#' Retrieve data from the myPersonality database server.
+#' Initialize connection to myPersonality database server.
 #'
-#' This function retrieves data from the Cambridge Psychometrics Centre's myPersonality database.
+#' This function starts your session and sets up your connection to the Cambridge Psychometrics Centre's myPersonality database.
+#' Running this function and providing valid user name and password when prompted sets up other data access functions, such as \code{participants()}.
+#' The exact names and number of the data access functions depends on your access privileges.
 #' 
-#' @param query A character string that specifies the variables that you are interested in. If left blank, it will show the available options.
+#' Once the other data access functions have been set up, you can use them to retrieve and filter data (see examples below).
+#' 
 #' @keywords manip
 #' @export
 #' @examples
-#' #participants()
-#' #participants("age > 90")
+#' # myPersonality()  # Prompts for your user name and password for database connection.
+#' # participants()  # Show information about participants, including available variables.
+#' # participants(age, gender)  # Retrieve age and gender data for all participants.
+#' # participants(age > 90, gender)  # Retrieve age and gender data for participants older than 90 years.
 
 myPersonality <- function() {  
-  defined.funcs <- myPersonalitySQL("SELECT display_name as func FROM `_meta_tables` ORDER BY func")
+  defined.funcs <- myPersonalitySQL("SHOW TABLES")[,1]
   cat("Currently, the following data access functions are available:\n")
   
   for (f in defined.funcs$func) {
+    if (substring(f, 1, 1) == "_") {next}
     cat(f)
     cat("()\n")
   }
