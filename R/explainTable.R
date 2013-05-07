@@ -22,6 +22,8 @@ explainTable <- function(table.name) {
     stop("Please check your table name.")
   }
   
+  o$row_count <- myPersonalitySQL(sprintf("SELECT COUNT(*) FROM %s", o$table.info$db_name))[, 1]
+  
   # Check if there are related tables
   sql <- sprintf('SELECT child_table FROM `_meta_related_tables` WHERE parent_table = "%s"', o$table.info$db_name)
   o$related <- myPersonalitySQL(sql)
@@ -47,4 +49,5 @@ print.table.help <- function(x) {
   print(listVariables(info$display_name))
   
   showInfo(x$related, "\nPlease use ", "() to see related data.")
+  cat("\nThe table has", x$row_count, "rows.")
 }
