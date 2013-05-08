@@ -1,6 +1,6 @@
 \name{myPersonality}
 \alias{myPersonality}
-\title{Initialize connection to myPersonality database server.}
+\title{Set up a connection to myPersonality database server.}
 \usage{
   myPersonality(user = NULL, password = NULL)
 }
@@ -27,7 +27,8 @@
   Once the other data access functions have been set up,
   you can use them to retrieve and filter data (see
   examples below). For more instructions, please visit
-  \url{https://github.com/vanderlowe/myPersonality/blob/master/README.md}.
+  \url{https://github.com/vanderlowe/myPersonality/blob/master/README.md}
+  and see \link{myPersonalityPackage}.
 }
 \note{
   You must contact the Cambridge Psychometrics Centre to
