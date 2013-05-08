@@ -116,9 +116,9 @@ elderly <- participants("age > 90", "gender", "relationship_status")
 ```
 
 ## Merging data
-The results from different tables can be combined. Let's get data for all myPersonality participants over the age of 90 who live in cities with a population greater than 100, but greater than 10,000. Since we already have the variable `elderly` from the example above, we only need to request the necessary location data.
+The results from different tables can be combined. Let's get data for all myPersonality participants over the age of 90 who live in smallish communities with a population greater than 1000, but less than 10,000. Since we already have the variable `elderly` from the example above, we only need to request the necessary location data.
 ```
-location <- address("current_location_city", "population > 100", "population < 10,000")
+location <- address("current_location_city", "population > 1000", "population < 10,000")
 elderly.in.small.towns <- merge(elderly, location)
 ```
 
@@ -133,3 +133,6 @@ elderly.in.Miami <- myPersonalitySQL("
   WHERE demog.age > 90 AND address.current_location_city = 'Miami'
 ")
 ```
+
+# Known ~~bugs~~ features
+* You may encounter "Error in fetch(key) : internal error -3 in R_decompress1" if trying to access documentation immediately after installing `myPersonality` package. This is a [known issue with R](http://stackoverflow.com/questions/10373098/error-in-fetchkey-internal-error-3-in-r-decompress1). Restarting R will resolve the issue.
