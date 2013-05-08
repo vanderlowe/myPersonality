@@ -1,7 +1,7 @@
 myPersonality
 =============
 
-The _myPersonality_ R package provides easy access to a rich dataset created by [Cambridge Psychometrics Centre](http://www.psychometrics.cam.ac.uk). To learn more about the dataset itself, please visit [myPersonality research wiki](http://mypersonality.org). Because the dataset contains millions of respondents, the easiest way to access the data is through a database connection. The _myPersonality_ package provides a set of utility functions to request specific variables of interest from the data.
+The 'myPersonality' R package provides easy access to a rich dataset created by [Cambridge Psychometrics Centre](http://www.psychometrics.cam.ac.uk). To learn more about the dataset itself, please visit [myPersonality research wiki](http://mypersonality.org). Because the dataset contains millions of respondents, the easiest way to access the data is through a database connection. The _myPersonality_ package provides a set of utility functions to request specific variables of interest from the data.
 
 # Data access
 The dataset is only available by special permission to our academic collaborators. If you are interested in using the dataset in your research, please [contact us](http://mypersonality.org/wiki/doku.php?id=database_use_guidelines) to request access privileges. **Please make sure you have received your user name and password from Cambridge Psychometrics Centre before proceeding with installation.**
@@ -75,7 +75,7 @@ mf_dating              Meeting other for dating
 mf_friendship          Meeting other for friendship           
 mf_networking          Meeting other for networking           
 mf_random              Meeting other for random play          
-mf_relationship        NA                                     
+mf_relationship        Meeting other for relationship                                    
 mf_whatever            Meeting other for whatever I can get   
 network_size           Number of friends*                     
 relationship_status    Relationship status*                   
@@ -86,6 +86,22 @@ userid                 Unique user identifier
 The table has 4282858 rows.
 ```
 Since we did not specify which variable (i.e., a field in the database) we wanted, the function provided us with information about the participant data, including a list of available variables.
+
+You may have noticed that some of the variable descriptions are marked with an asterisk. This means that there is additional information available about this variable. The 'explainVariable' function allows you to find out this extra information. Try typing:
+```
+explainVariable("gender")
+```
+
+The results should look something like this:
+```
+Variable: gender
+Access function: participants()
+Description: Gender of the user
+
+Details:
+1=female, 0=male
+```
+With this additional information, we can tell that participants whose gender is coded as `1` are female.
 
 Let's say we want to get the age, gender, and relationship status of all users and assign it to variable `people`. For this, you would type:
 ```

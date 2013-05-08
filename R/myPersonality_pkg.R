@@ -23,7 +23,6 @@
 #' @aliases myPersonalityPackage
 #' @seealso \link{myPersonality}, \link{findVariable}, \link{explainVariable}
 #' @import data.table
-#' @docType package
 #' @rdname myPersonalityPackage
 #' @name myPersonalityPackage
 NULL

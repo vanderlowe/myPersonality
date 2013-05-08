@@ -1,7 +1,5 @@
-\docType{package}
 \name{myPersonalityPackage}
 \alias{myPersonalityPackage}
-\alias{myPersonalityPackage-package}
 \title{Easy access to myPersonality dataset.}
 \description{
   \code{myPersonality} package provides tools that make it
