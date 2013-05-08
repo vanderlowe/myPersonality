@@ -19,7 +19,9 @@
   queries using SELECT statements.
 }
 \examples{
-\dontrun{myPersonalitySQL("SELECT * FROM demog")}
+\dontrun{
+myPersonalitySQL("SELECT * FROM demog")
+}
 }
 \keyword{manip}
 

@@ -1,12 +1,16 @@
-#' Provide information about specific myPersonality database tables.
+#' Information about myPersonality database tables.
 #'
-#' This function retrieves data from the Cambridge Psychometrics Centre's myPersonality database.
+#' This function retrieves metadata about tables from the Cambridge Psychometrics Centre's myPersonality database.
+#' However, it is easier to run the data access function without an argument to get the same results (e.g., \code{participants()}).
 #' 
 #' @param table.name A character string that specifies the table that you are interested in.
 #' @keywords attribute
 #' @export
+#' @seealso \link{myPersonality}, \link{explainVariable}
 #' @examples
-#' \dontrun{explainTable("address")}
+#' \dontrun{
+#' explainTable("address")
+#' }
 
 explainTable <- function(table.name) {
   if (missing(table.name)) {

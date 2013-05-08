@@ -20,6 +20,8 @@
 #' For more information, please visit \url{https://github.com/vanderlowe/myPersonality/blob/master/README.md}.
 #' 
 #' @references Kosinski, M., Stillwell D. J., & Graepel, T. (2013). Private traits and attributes are predictable from digital records of human behavior. Proceedings of the National Academy of Sciences, 110(15), 5802-5805.
+#' @aliases myPersonality-pkg
+#' @seealso \link{myPersonality}, \link{findVariable}, \link{explainVariable}
 #' @import data.table
 #' @docType package
 #' @rdname myPersonality-pkg

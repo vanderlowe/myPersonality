@@ -5,12 +5,17 @@
 #' 
 #' @param variable.name A character string that specifies the variable of interest.
 #' @keywords attribute
+#' @seealso \link{findVariable}
 #' @export
 #' @examples
-#' \dontrun{explainVariable("gender")}
+#' \dontrun{
+#' explainVariable("gender")
+#' }
 #' # Multiple tables contain variable 'userid'.
 #' # Read instructions in the function output to select the right table.
-#' \dontrun{explainVariable("userid")}
+#' \dontrun{
+#' explainVariable("userid")
+#' }
 
 explainVariable <- function(variable.name) {
   sql <- sprintf('SELECT * FROM _meta_variables WHERE name = "%s"', variable.name)

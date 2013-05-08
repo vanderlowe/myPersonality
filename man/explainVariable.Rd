@@ -16,10 +16,17 @@
   table/variable pair to show.
 }
 \examples{
-\dontrun{explainVariable("gender")}
+\dontrun{
+explainVariable("gender")
+}
 # Multiple tables contain variable 'userid'.
 # Read instructions in the function output to select the right table.
-\dontrun{explainVariable("userid")}
+\dontrun{
+explainVariable("userid")
+}
+}
+\seealso{
+  \link{findVariable}
 }
 \keyword{attribute}
 

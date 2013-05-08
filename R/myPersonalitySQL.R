@@ -9,7 +9,9 @@
 #' @export
 #' @return A \code{data.table} object.
 #' @examples
-#' \dontrun{myPersonalitySQL("SELECT * FROM demog")}
+#' \dontrun{
+#' myPersonalitySQL("SELECT * FROM demog")
+#' }
 
 myPersonalitySQL <- function(query = "SHOW TABLES;", user = NULL, password = NULL) {
   

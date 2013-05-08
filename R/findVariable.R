@@ -6,8 +6,11 @@
 #' @param query A character string containing the text to be searched. It is advisable to use queries that are longer than 3 characters.
 #' @keywords attribute
 #' @export
+#' @seealso \link{explainVariable}
 #' @examples
-#' # findVariable("sex")
+#' \dontrun{
+#' findVariable("sex")
+#' }
 
 findVariable <- function(query) {
   sql <- sprintf('SELECT * FROM _meta_variables WHERE name LIKE "%%%s" OR description LIKE "%%%s%%" OR note LIKE "%%%s%%"', query, query, query)

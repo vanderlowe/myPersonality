@@ -26,25 +26,37 @@
 \details{
   Once the other data access functions have been set up,
   you can use them to retrieve and filter data (see
-  examples below).
+  examples below). For more instructions, please visit
+  \url{https://github.com/vanderlowe/myPersonality/blob/master/README.md}.
 }
 \note{
   You must contact the Cambridge Psychometrics Centre to
-  obtain access privileges. You cannot use this package
-  without a valid user name and password. If you do not
+  obtain access privileges. __You cannot use this package
+  without a valid user name and password.__ If you do not
   have one, please visit
   \url{http://mypersonality.org/wiki/doku.php?id=database_use_guidelines}
   to register as a collaborator.
 }
 \examples{
 # Establish database connection and generate data access functions.
-\dontrun{myPersonality()}
+\dontrun{
+myPersonality()
+}
 # Show information about participants, including available variables.
-\dontrun{participants()}
+\dontrun{
+participants()
+}
 # Retrieve age and gender data for all participants.
-\dontrun{participants("age", "gender")}
+\dontrun{
+participants("age", "gender")
+}
 # Retrieve age and gender data for participants older than 90 years.
-\dontrun{participants("age > 90", "gender")}
+\dontrun{
+participants("age > 90", "gender")
+}
+}
+\seealso{
+  \link{myPersonality-pkg}, \link{findVariable}
 }
 \keyword{manip}
 

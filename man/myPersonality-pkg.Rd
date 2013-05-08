@@ -2,6 +2,7 @@
 \name{myPersonality}
 \alias{myPersonality}
 \alias{myPersonality-package}
+\alias{myPersonality-pkg}
 \title{Easy access to myPersonality dataset.}
 \description{
   \code{myPersonality} package provides tools that make it
@@ -46,5 +47,9 @@
   Private traits and attributes are predictable from
   digital records of human behavior. Proceedings of the
   National Academy of Sciences, 110(15), 5802-5805.
+}
+\seealso{
+  \link{myPersonality}, \link{findVariable},
+  \link{explainVariable}
 }
 

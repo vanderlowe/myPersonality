@@ -17,7 +17,12 @@
   also return 'marriage' as a result.
 }
 \examples{
-# findVariable("sex")
+\dontrun{
+findVariable("sex")
+}
+}
+\seealso{
+  \link{explainVariable}
 }
 \keyword{attribute}
 
