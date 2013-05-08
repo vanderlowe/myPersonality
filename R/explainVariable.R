@@ -35,7 +35,7 @@ print.variable.help <- function(x) {
     cat("The query returns multiple results.\n")
     for (i in 1:nrow(x)) {
       cat(i)
-      cat(":", getDisplayName(x$parent_table[i]), "-", x$name[i], "\n")
+      cat(":", getDisplayName(x$parent_table[i]), "-", as.character(x$name[i]), "\n")
     }
     n <- readline("Please select one from the list by entering its number: ")
     n <- as.numeric(n)
