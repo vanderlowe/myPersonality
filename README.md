@@ -50,7 +50,7 @@ First, you should be prompted for your user name and password. Once you enter th
 Currently, the following data access functions are available to you:
 adress()
 participants()
-satisfaction\_with\_life()
+satisfaction_with_life()
 ```
 Each of these functions gives you access to data in our database.
 
