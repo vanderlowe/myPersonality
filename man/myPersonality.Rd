@@ -56,7 +56,7 @@ participants("age > 90", "gender")
 }
 }
 \seealso{
-  \link{myPersonality-pkg}, \link{findVariable}
+  \link{myPersonalityPackage}, \link{findVariable}
 }
 \keyword{manip}
 

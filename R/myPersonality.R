@@ -13,7 +13,7 @@
 #' @param password Your password (as provided by the Cambridge Psychometrics Centre)
 #' @return A printout of data access functions.
 #' @note You must contact the Cambridge Psychometrics Centre to obtain access privileges. __You cannot use this package without a valid user name and password.__ If you do not have one, please visit \url{http://mypersonality.org/wiki/doku.php?id=database_use_guidelines} to register as a collaborator.
-#' @seealso \link{myPersonality-pkg}, \link{findVariable}
+#' @seealso \link{myPersonalityPackage}, \link{findVariable}
 #' @examples
 #' # Establish database connection and generate data access functions.
 #' \dontrun{
