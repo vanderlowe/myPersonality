@@ -51,7 +51,7 @@ print.variable.help <- function(x) {
   }
   
   showInfo(x$name, "Variable: ")
-  showInfo(getDisplayName(x$parent_table), "Access function: ", "()\n")
+  showInfo(getDisplayName(x$parent_table), "Access function: ", sprintf("('%s')\n", x$name))
   showInfo(x$description, "Description: ","\n")
   showInfo(x$note, "\nDetails:\n")
 }

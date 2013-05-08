@@ -54,7 +54,7 @@ satisfaction_with_life()
 ```
 Each of these functions gives you access to data in our database.
 
-## Loading data
+## Exploring the dataset
 Let's start with basic information about participants in myPersonality database. Go ahead and type:
 ```
 participants()
@@ -91,18 +91,35 @@ You may have noticed that some of the variable descriptions are marked with an a
 ```
 explainVariable("gender")
 ```
-
 The results should look something like this:
 ```
 Variable: gender
-Access function: participants()
+Access function: participants('gender')
 Description: Gender of the user
 
 Details:
 1=female, 0=male
 ```
-With this additional information, we can tell that participants whose gender is coded as `1` are female.
+With this additional information, we can tell that participants whose gender is coded as `1` are female. For your convenience, the `Access function` line provides you the code to [retrieve data](#loading).
 
+To find variables that might be interesting to you, you can use the `findVariables` function to search the dataset. Let's say that you are interested in the zip code of the participants. To find out if the dataset contains zip codes, you can type:
+```
+findVariable("zip")
+```
+This function will search the variable name, description, and additional notes for  instances of the word 'zip' and return the results for your inspection. Please note that if there are multiple results, the function will stop to ask you to indicate which result you would like to see in detail:
+```
+The query returns multiple results.
+1: address - current_location_zip 
+2: address - hometown_location_zip 
+Please select one from the list by entering its number:
+```
+If you are interested in the hometown zip (instead of the current location), you would type `2` on your keyboard.
+```
+Variable: hometown_location_zip
+Access function: address('hometown_location_zip')
+```
+
+## Loading data<a id="loading"></a>
 Let's say we want to get the age, gender, and relationship status of all users and assign it to variable `people`. For this, you would type:
 ```
 people <- participants("age", "gender", "relationship_status")
