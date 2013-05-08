@@ -40,8 +40,8 @@ print.variable.help <- function(x) {
     n <- readline("Please select one from the list by entering its number: ")
     n <- as.numeric(n)
     if (class(n) != "numeric") {stop("You must enter an integer.")}
+    x <- x[n,]
   }
-  x <- x[n,]
   
   showInfo(x$name, "Variable: ")
   showInfo(getDisplayName(x$parent_table), "Access function: ", "()\n")
