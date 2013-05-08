@@ -28,3 +28,12 @@ showInfo <- function(x, prefix = "", postfix = "\n") {
     cat(as.character(x), postfix, sep = "")
   }
 }
+
+defactor <- function(df) {
+  for (i in 1:ncol(df)) {
+    if (class(df[, i]) == "factor") {
+      df[, i] <- as.character(df[, i])
+    }
+  }
+  return(df)
+}

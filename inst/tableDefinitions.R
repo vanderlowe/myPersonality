@@ -3,7 +3,6 @@
 
 all.tables <- myPersonalitySQL("SHOW TABLES")[,1]
 .meta.tables <- myPersonalitySQL("SELECT * FROM _meta_tables")
-.meta.tables <- as.data.frame(.meta.tables, stringsAsFactors = F)
 
 for (this.table in all.tables) {
   if (substring(this.table, 1, 1) == "_") {next}  # Skip meta tables

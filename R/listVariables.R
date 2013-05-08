@@ -3,11 +3,12 @@ listVariables <- function(table.name) {
   
   # Get table definition from the database
   fields <- myPersonalitySQL(sprintf("SHOW COLUMNS FROM %s", db_name))$Field
-  variables <- data.frame(variable = fields)
+  variables <- data.frame(variable = fields, stringsAsFactors = F)
   
   # Get basic variable data from _meta_variables
   sql <- sprintf('SELECT name, description, note FROM _meta_variables WHERE parent_table = "%s"', db_name)
-  var.info <- myPersonalitySQL(sql)
+  var.info <- defactor(myPersonalitySQL(sql))
+  
   if (!nrow(var.info) == 0) {
     variables <- merge(variables, var.info, by.x = "variable", by.y = "name", all.x = T)
   }
