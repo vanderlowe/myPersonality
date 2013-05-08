@@ -7,13 +7,13 @@ The _myPersonality_ R package provides easy access to a rich dataset created by 
 The dataset is only available by special permission to our academic collaborators. If you are interested in using the dataset in your research, please [contact us](http://mypersonality.org/wiki/doku.php?id=database_use_guidelines) to request access privileges. **Please make sure you have received your user name and password from Cambridge Psychometrics Centre before proceeding with installation.**
 
 # Installation
-Please follow these instructions carefully. You need to do the setup only once.
+Please follow these instructions carefully and to the letter. You need to do the setup only once.
 
 First, you need to install the _myPersonality_ package itself. You can install the prototype version available on [github](https://github.com/vanderlowe/myPersonality) using _[devtools](https://github.com/hadley/devtools/)_ package:
 ```
 install.packages("devtools") 
 library(devtools)
-install_github('myPersonality',  username='vanderlowe')
+install_github('myPersonality',  username = 'vanderlowe')
 ```
 ## Install database drivers (Windows users only)
 On computers running Windows operating system, _myPersonality_ depends on _RODBC_ package to establish database connections. This requires the installation of a _MySQL ODBC driver_ and _Data Source Name_ (DSN) on your computer.
@@ -45,12 +45,12 @@ To test that your connection works, type the following:
 myPersonality()
 ```
 
-First, you should be prompted for your user name and password. Once you enter these, you should see the following message:
+First, you should be prompted for your user name and password. Once you enter these, you should see the following message (or similar, as the available functions depend on the extent of your access privileges):
 ```
-Currently, the following functions are available:
-participants()
+Currently, the following data access functions are available to you:
 adress()
-employers()
+participants()
+satisfaction\_with\_life()
 ```
 Each of these functions gives you access to data in our database.
 
@@ -61,25 +61,31 @@ participants()
 ```
 You should see the following message:
 ```
-You must request at least one variable.
-You can choose one or more of the following:
-userid
-gender
-birthday
-age
-relationship_status
-interested_in
-mf_relationship
-mf_dating
-mf_random
-mf_friendship
-mf_whatever
-mf_networking
-locale
-network_size
-timezone
+This table contains basic demographic information about the myPersonality participants.
+For more information about these data, please see: Kosinski, M., Stillwell D. J., & Graepel, T. (2013). Private traits and attributes are predictable from digital records of human behavior. Proceedings of the National Academy of Sciences, 110(15), 5802-5805.
+http://mypersonality.org
+
+This table contains the following variables:
+age                                                           
+birthday                                                      
+gender                 Gender of the user*                    
+interested_in          Interested In*                         
+locale                 language version of Facebook interface*
+mf_dating              Meeting other for dating               
+mf_friendship          Meeting other for friendship           
+mf_networking          Meeting other for networking           
+mf_random              Meeting other for random play          
+mf_relationship        NA                                     
+mf_whatever            Meeting other for whatever I can get   
+network_size           Number of friends*                     
+relationship_status    Relationship status*                   
+timezone               User's Timezone                        
+userid                 Unique user identifier                 
+
+* Use command 'explainVariable("variable_name_here")' to see additional variable notes.
+The table has 4282858 rows.
 ```
-Since we did not specify which variable (i.e., a field in the database) we wanted, the function provided us with a helpful list of available variables.
+Since we did not specify which variable (i.e., a field in the database) we wanted, the function provided us with information about the participant data, including a list of available variables.
 
 Let's say we want to get the age, gender, and relationship status of all users and assign it to variable `people`. For this, you would type:
 ```
@@ -111,9 +117,3 @@ elderly.in.Miami <- myPersonalitySQL("
   WHERE demog.age > 90 AND address.current_location_city = 'Miami'
 ")
 ```
-
-# Product Backlog
-* Self-documenting database
-* User activity log (needs INSERT and UPDATE privileges for usage_log table)
-* Automatic detection of additional tables and variables available in the database
-* Production database at sql.mypersonality.org
