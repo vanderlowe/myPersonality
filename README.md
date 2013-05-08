@@ -140,7 +140,7 @@ elderly.in.small.towns <- merge(elderly, location)
 ```
 
 # Example usage: Advanced users
-All data access is done via the `myPersonalitySQL` function. It allows you to execute SQL queries on the database (only read-only queries are allowed).
+Behind the scenes, all data access is done via the `myPersonalitySQL` function. It allows you to execute SQL queries on the database (only read-only queries are allowed).
 ```
 elderly.in.Miami <- myPersonalitySQL('
   SELECT demog.age, demog.gender, demog.relationship_status, address.current_location_city 
