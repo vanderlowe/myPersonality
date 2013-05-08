@@ -1,11 +1,11 @@
-#' Initialize connection to myPersonality database server.
+#' Set up a connection to myPersonality database server.
 #'
 #' This function starts your session and sets up your connection to the Cambridge Psychometrics Centre's myPersonality database.
 #' Running this function and providing valid user name and password when prompted sets up other data access functions, such as \code{participants()}.
 #' The exact names and number of the data access functions depends on your access privileges.
 #' 
 #' Once the other data access functions have been set up, you can use them to retrieve and filter data (see examples below).
-#' For more instructions, please visit \url{https://github.com/vanderlowe/myPersonality/blob/master/README.md}.
+#' For more instructions, please visit \url{https://github.com/vanderlowe/myPersonality/blob/master/README.md} and see \link{myPersonalityPackage}.
 #' 
 #' @keywords manip
 #' @export
