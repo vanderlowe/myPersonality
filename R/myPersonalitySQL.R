@@ -8,12 +8,13 @@
 #' @import data.table
 #' @export
 #' @return A \code{data.table} object.
+#' @note The query must be enclosed in \bold{single} quotation marks.
 #' @examples
 #' \dontrun{
 #' myPersonalitySQL("SELECT * FROM demog")
 #' }
 
-myPersonalitySQL <- function(query = "SHOW TABLES;", user = NULL, password = NULL) {
+myPersonalitySQL <- function(query = 'SHOW TABLES;', user = NULL, password = NULL) {
   
   if (!interactive()) {return(NULL)}
   

@@ -100,7 +100,7 @@ Description: Gender of the user
 Details:
 1=female, 0=male
 ```
-With this additional information, we can tell that participants whose gender is coded as `1` are female. For your convenience, the `Access function` line provides you the code to [retrieve data](#loading).
+With this additional information, we can tell that participants whose gender is coded as `1` are female. For your convenience, the `Access function` line provides you the code to retrieve the data.
 
 To find variables that might be interesting to you, you can use the `findVariables` function to search the dataset. Let's say that you are interested in the zip code of the participants. To find out if the dataset contains zip codes, you can type:
 ```
@@ -113,13 +113,13 @@ The query returns multiple results.
 2: address - hometown_location_zip 
 Please select one from the list by entering its number:
 ```
-If you are interested in the hometown zip (instead of the current location), you would type `2` on your keyboard.
+If you are interested in the hometown zip (instead of the current location), you would type `2` on your keyboard, producing information about variable `hometown_location_zip`.
 ```
 Variable: hometown_location_zip
 Access function: address('hometown_location_zip')
 ```
 
-## Loading data<a id="loading"></a>
+## Loading data
 Let's say we want to get the age, gender, and relationship status of all users and assign it to variable `people`. For this, you would type:
 ```
 people <- participants("age", "gender", "relationship_status")
@@ -142,14 +142,15 @@ elderly.in.small.towns <- merge(elderly, location)
 # Example usage: Advanced users
 All data access is done via the `myPersonalitySQL` function. It allows you to execute SQL queries on the database (only read-only queries are allowed).
 ```
-elderly.in.Miami <- myPersonalitySQL("
+elderly.in.Miami <- myPersonalitySQL('
   SELECT demog.age, demog.gender, demog.relationship_status, address.current_location_city 
   FROM demog 
   LEFT JOIN address 
   ON demog.userid = address.userid 
-  WHERE demog.age > 90 AND address.current_location_city = 'Miami'
-")
+  WHERE demog.age > 90 AND address.current_location_city = "Miami"
+')
 ```
+Please note that the query must be enclosed in *single* quotation marks.
 
 # Known ~~bugs~~ features
 * You may encounter "Error in fetch(key) : internal error -3 in R_decompress1" if trying to access documentation immediately after installing `myPersonality` package. This is a [known issue with R](http://stackoverflow.com/questions/10373098/error-in-fetchkey-internal-error-3-in-r-decompress1). Restarting R will resolve the issue.

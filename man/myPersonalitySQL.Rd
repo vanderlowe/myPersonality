@@ -18,6 +18,10 @@
   users only. By default, users only have privileges for
   queries using SELECT statements.
 }
+\note{
+  The query must be enclosed in \bold{single} quotation
+  marks.
+}
 \examples{
 \dontrun{
 myPersonalitySQL("SELECT * FROM demog")
