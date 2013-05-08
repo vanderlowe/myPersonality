@@ -17,6 +17,18 @@ explainVariable <- function(variable.name) {
   return(results)
 }
 
+#' Prints myPersonality variable information.
+#'
+#' This function extends generic print function.
+#' 
+#' @param x An object returned by either findVariable or explainVariable functions
+#' @keywords attribute
+#' @method print variable.help
+#' @S3method print variable.help
+#' @examples
+#' # explainVariable("gender")
+#' # explainVariable("userid")  # Multiple tables contain variable 'userid'
+
 print.variable.help <- function(x) {
   class(x) <- "data.frame"
   if (nrow(x) > 1) {

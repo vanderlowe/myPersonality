@@ -1,3 +1,4 @@
+S3method(print,variable.help)
 export(explainTable)
 export(explainVariable)
 export(findVariable)
