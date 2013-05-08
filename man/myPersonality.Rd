@@ -4,6 +4,16 @@
 \usage{
   myPersonality(user = NULL, password = NULL)
 }
+\arguments{
+  \item{user}{Your user name (as provided by the Cambridge
+  Psychometrics Centre).}
+
+  \item{password}{Your password (as provided by the
+  Cambridge Psychometrics Centre)}
+}
+\value{
+  A printout of data access functions.
+}
 \description{
   This function starts your session and sets up your
   connection to the Cambridge Psychometrics Centre's
@@ -18,11 +28,23 @@
   you can use them to retrieve and filter data (see
   examples below).
 }
+\note{
+  You must contact the Cambridge Psychometrics Centre to
+  obtain access privileges. You cannot use this package
+  without a valid user name and password. If you do not
+  have one, please visit
+  \url{http://mypersonality.org/wiki/doku.php?id=database_use_guidelines}
+  to register as a collaborator.
+}
 \examples{
-# myPersonality()  # Prompts for your user name and password for database connection.
-# participants()  # Show information about participants, including available variables.
-# participants("age", "gender")  # Retrieve age and gender data for all participants.
-# participants("age > 90", "gender")  # Retrieve age and gender data for participants older than 90 years.
+# Establish database connection and generate data access functions.
+\dontrun{myPersonality()}
+# Show information about participants, including available variables.
+\dontrun{participants()}
+# Retrieve age and gender data for all participants.
+\dontrun{participants("age", "gender")}
+# Retrieve age and gender data for participants older than 90 years.
+\dontrun{participants("age > 90", "gender")}
 }
 \keyword{manip}
 

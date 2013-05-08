@@ -9,16 +9,17 @@
   \item{query}{SQL query string to be executed. Defaults to
   "SHOW TABLES;"}
 }
+\value{
+  A \code{data.table} object.
+}
 \description{
   This function executes SQL queries on the Cambridge
-  Psychometrics Centre database. \code{myPersonalitySQL}
-  automatically uses the right R package for database
-  access, depending on your operating system (RMySQL for
-  Mac and RODBC for Windows).
+  Psychometrics Centre database. It is meant for advanced
+  users only. By default, users only have privileges for
+  queries using SELECT statements.
 }
 \examples{
-#myPersonality()
-#myPersonality("SELECT * FROM demog")
+\dontrun{myPersonalitySQL("SELECT * FROM demog")}
 }
 \keyword{manip}
 

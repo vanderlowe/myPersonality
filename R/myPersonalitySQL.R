@@ -1,28 +1,26 @@
 #' Execute SQL query on myPersonality database server.
 #'
-#' This function executes SQL queries on the Cambridge Psychometrics Centre database.
-#' \code{myPersonalitySQL} automatically uses the right R package for database access,
-#' depending on your operating system (RMySQL for Mac and RODBC for Windows).
+#' This function executes SQL queries on the Cambridge Psychometrics Centre database. It is meant for advanced users only.
+#' By default, users only have privileges for queries using SELECT statements.
 #' 
 #' @param query SQL query string to be executed. Defaults to "SHOW TABLES;"
 #' @keywords manip
+#' @import data.table
 #' @export
+#' @return A \code{data.table} object.
 #' @examples
-#' #myPersonality()
-#' #myPersonality("SELECT * FROM demog")
+#' \dontrun{myPersonalitySQL("SELECT * FROM demog")}
 
 myPersonalitySQL <- function(query = "SHOW TABLES;", user = NULL, password = NULL) {
   
   if (!interactive()) {return(NULL)}
   
   # Check whether necessary environment variables exist. If not, run configuration.
-  if (all(
-        c(Sys.getenv("myPersonality_user"), 
-          Sys.getenv("myPersonality_password"),
-          Sys.getenv("myPersonality_host"),
-          Sys.getenv("myPersonality_database")
-          ) == "")
-      ) {
+  if (
+      Sys.getenv("myPersonality_user") %in% c("", "connection_test") &
+      Sys.getenv("myPersonality_password") %in% c("", "foobar") &
+      interactive()
+    ) {
     config(user, password)
   }
   

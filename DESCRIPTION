@@ -1,12 +1,12 @@
 Package: myPersonality
 Title: Tools for accessing myPersonality dataset provided by Cambridge
     Psychometrics Centre
-Description: myPersonality is a large dataset of over 4 million Facebook users
-    and their test results. Because the dataset is too large to distribute as
-    files, this package provides access to the dataset on a database
+Description: myPersonality is a large dataset of millions of Facebook users and
+    their various test results. Because the dataset is too large to distribute
+    as files, this package provides access to the dataset on a database
     administered by Cambridge Psychometrics Centre.
 URL: http://mypersonality.org
-Version: 0.1
+Version: 1.0
 Maintainer: Ilmo van der Lowe <iv244@cam.ac.uk>
 Author: Ilmo van der Lowe <iv244@cam.ac.uk>
 Depends:
@@ -30,3 +30,4 @@ Collate:
     'explainVariable.R'
     'findVariable.R'
     'listVariables.R'
+    'myPersonality_pkg.R'

@@ -1,6 +1,8 @@
+S3method(print,table.help)
 S3method(print,variable.help)
 export(explainTable)
 export(explainVariable)
 export(findVariable)
 export(myPersonality)
 export(myPersonalitySQL)
+import(data.table)

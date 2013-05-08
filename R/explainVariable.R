@@ -7,8 +7,10 @@
 #' @keywords attribute
 #' @export
 #' @examples
-#' # explainVariable("gender")
-#' # explainVariable("userid")  # Multiple tables contain variable 'userid'
+#' \dontrun{explainVariable("gender")}
+#' # Multiple tables contain variable 'userid'.
+#' # Read instructions in the function output to select the right table.
+#' \dontrun{explainVariable("userid")}
 
 explainVariable <- function(variable.name) {
   sql <- sprintf('SELECT * FROM _meta_variables WHERE name = "%s"', variable.name)

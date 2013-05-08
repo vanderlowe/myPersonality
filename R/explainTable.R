@@ -6,7 +6,7 @@
 #' @keywords attribute
 #' @export
 #' @examples
-#' # explainTable("address")
+#' \dontrun{explainTable("address")}
 
 explainTable <- function(table.name) {
   if (missing(table.name)) {
@@ -37,7 +37,17 @@ explainTable <- function(table.name) {
   return(o)
 }
 
-# Internal function to display table help objects.
+#' Prints myPersonality table information.
+#'
+#' This function extends generic print function.
+#' 
+#' @param x An object returned by explainTable
+#' @keywords attribute
+#' @method print table.help
+#' @S3method print table.help
+#' @examples
+#' \dontrun{explainTable("address")}
+
 print.table.help <- function(x) {
   info <- x$table.info
   showInfo(info$details, "")

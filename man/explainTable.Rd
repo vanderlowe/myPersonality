@@ -13,7 +13,7 @@
   Psychometrics Centre's myPersonality database.
 }
 \examples{
-# explainTable("address")
+\dontrun{explainTable("address")}
 }
 \keyword{attribute}
 

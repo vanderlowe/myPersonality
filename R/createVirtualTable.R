@@ -32,7 +32,8 @@ createVirtualTable <- function(table.name, ...) {
   o$where <- args$where
   
   class(o) <- "virtual.table"
-  return(getData(o))
+  results <- getData(o)
+  return(results)
 }
 
 print.virtual.table <- function(x) {
@@ -40,7 +41,6 @@ print.virtual.table <- function(x) {
 }
 
 getData <- function(x) {
-  suppressPackageStartupMessages(require(data.table))
   sql.data <- data.table(myPersonalitySQL(generateSQL(x)))
   if (!identical(x$key, character(0))) {
     setkeyv(sql.data, x$key)
