@@ -10,8 +10,7 @@ Version: 1.0
 Maintainer: Ilmo van der Lowe <iv244@cam.ac.uk>
 Author: Ilmo van der Lowe <iv244@cam.ac.uk>
 Depends:
-    R (>= 2.14)
-Imports:
+    R (>= 2.14),
     data.table
 Suggests:
     testthat (>= 0.2),
