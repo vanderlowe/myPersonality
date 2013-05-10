@@ -96,7 +96,7 @@ explainVariable("gender")
 The results should look something like this:
 ```
 Variable: gender
-Access function: participants('gender')
+Access function to retrieve data: participants('gender')
 Description: Gender of the user
 
 Details:
