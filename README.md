@@ -9,12 +9,6 @@ The dataset is only available by special permission to our academic collaborator
 # Installation
 Please follow these instructions carefully and to the letter. You need to do the setup only once.
 
-First, you need to install the _myPersonality_ package itself. You can install the prototype version available on [github](https://github.com/vanderlowe/myPersonality) using _[devtools](https://github.com/hadley/devtools/)_ package:
-```
-install.packages("devtools") 
-library(devtools)
-install_github('myPersonality',  username = 'vanderlowe')
-```
 ## Install database drivers (Windows users only)
 On computers running Windows operating system, _myPersonality_ depends on _RODBC_ package to establish database connections. This requires the installation of a _MySQL ODBC driver_ and _Data Source Name_ (DSN) on your computer.
 
@@ -32,6 +26,14 @@ Please download and install the _MySQL ODBC driver_ from [MySQL developer websit
 8. Leave "Description", "User", "Password", and "Database" fields blank. The "Port:" field should read 3306 by default.
 9. Optionally, click "Details >>" and check the box "Use compression". This will improve data download speeds.
 10. Click "OK" to save the DSN.
+
+## Install the `myPersonality` package itself
+The _myPersonality_ package is installed using the _[devtools](https://github.com/hadley/devtools/)_ package:
+```
+install.packages("devtools") 
+library(devtools)
+install_github('myPersonality',  username = 'vanderlowe')
+```
 
 # Example usage: Novice users
 At the start of each session, you must load the _myPersonality_ package to make the functions available in R. You can do this by typing:
