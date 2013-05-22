@@ -13,7 +13,9 @@ Please follow these instructions carefully and to the letter. You need to do the
 On computers running Windows operating system, _myPersonality_ depends on _RODBC_ package to establish database connections. This requires the installation of a _MySQL ODBC driver_ and _Data Source Name_ (DSN) on your computer.
 
 ### MySQL ODBC driver
-Please download and install the _MySQL ODBC driver_ from [MySQL developer website](http://dev.mysql.com/downloads/connector/odbc/5.2.html#downloads). On the download page, find _Windows (x86, 64-bit), MSI Installer_. It should work for most users.
+Please download and install the _MySQL ODBC driver_ from [MySQL developer website](http://dev.mysql.com/downloads/connector/odbc/5.2.html#downloads). On the download page, find _Windows (x86, 64-bit), MSI Installer_, if you are running R in a 64-bit environment. For a 32-bit compatible MySQL driver, please choose _Windows (x86, 32-bit), MSI Installer
+Connector-ODBC_.
+* If you are not sure whether your PC running the 32-bit or 64-bit version of Windows, Microsoft has provided [information on how to find it out](http://windows.microsoft.com/en-GB/windows7/find-out-32-or-64-bit).
 
 ### Data Source Name
 1. Once you have installed the _MySQL ODBC driver_, click the Windows Start menu and type `ODBC` into the search box.
