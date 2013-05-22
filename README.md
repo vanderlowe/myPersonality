@@ -18,7 +18,7 @@ Connector-ODBC_.
 * If you are not sure whether your PC running the 32-bit or 64-bit version of Windows, Microsoft has provided [information on how to find it out](http://windows.microsoft.com/en-GB/windows7/find-out-32-or-64-bit).
 
 ### Data Source Name
-1. Once you have installed the _MySQL ODBC driver_, click the Windows Start menu and type `ODBC` into the search box.
+1. Once you have installed the _MySQL ODBC driver_, click the Windows Start menu and type `ODBC` into the search box. (For 32-bit Windows machines, please use `odbcad32` instead.)
 2. Click on "Data Source (ODBC)" in the search results. Wait for the program to open.
 3. Select the "System DSN" tab. 
 4. Click the "Add..." button.
