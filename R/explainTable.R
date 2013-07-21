@@ -59,7 +59,7 @@ print.table.help <- function(x) {
   showInfo(info$citation, "For more information about these data, please see: ")
   showInfo(info$url,"", "\n\n")
   
-  cat("This table contains the following variables:\n")
+  cat("The database table", as.character(info$db_name), "contains the following variables:\n")
   print(listVariables(info$display_name))
   
   showInfo(x$related, "\nPlease use ", "() to see related data.")
