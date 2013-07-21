@@ -69,7 +69,7 @@ This table contains basic demographic information about the myPersonality partic
 For more information about these data, please see: Kosinski, M., Stillwell D. J., & Graepel, T. (2013). Private traits and attributes are predictable from digital records of human behavior. Proceedings of the National Academy of Sciences, 110(15), 5802-5805.
 http://mypersonality.org
 
-This table contains the following variables:
+The database table demog contains the following variables:
 age                                                           
 birthday                                                      
 gender                 Gender of the user*                    
@@ -154,7 +154,7 @@ elderly.in.Miami <- myPersonalitySQL('
   WHERE demog.age > 90 AND address.current_location_city = "Miami"
 ')
 ```
-Please note that the query must be enclosed in *single* quotation marks.
+Please note that the query must be enclosed in *single* quotation marks. Also, the actual database table names may differ from the data access function names. To find out the database table names, run the corresponding data access function. The database table name is shown in the output, right before the list of variables.
 
 # Known ~~bugs~~ features
 * You may encounter "Error in fetch(key) : internal error -3 in R_decompress1" if trying to access documentation immediately after installing `myPersonality` package. This is a [known issue with R](http://stackoverflow.com/questions/10373098/error-in-fetchkey-internal-error-3-in-r-decompress1). Restarting R will resolve the issue.
